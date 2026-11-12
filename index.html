@@ -58,6 +58,25 @@ ul{list-style:none;margin:0;padding:0}
 .mast .what a{color:var(--color-ink)}
 @media (min-width:60rem){.mast{grid-template-columns:auto minmax(0,1fr);column-gap:var(--space-xl)}.mast svg{width:27rem}}
 
+/* The manual itself: intro + two short lists */
+.manual{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-lg);padding:var(--space-lg) 0;border-top:2px solid var(--color-ink);border-bottom:1px solid var(--color-rule);margin-bottom:var(--space-xl)}
+.manual h3{font-stretch:112%;font-weight:750;font-size:1rem;margin:0 0 var(--space-xs)}
+.manual .lead{font-stretch:106%;font-weight:600;font-size:1.3rem;line-height:1.3;margin:0 0 var(--space-sm);max-width:24rem}
+.manual .strengths,.manual .reach{margin:0 0 var(--space-2xs);color:var(--color-ink-2);font-size:.92rem;max-width:24rem}
+.manual li{padding:.4rem 0;font-size:.95rem;color:var(--color-ink-2);border-bottom:1px solid var(--color-rule)}
+.manual li:last-child{border-bottom:0}
+.manual li b{color:var(--color-ink);font-weight:650}
+.manual-h,.mottos{grid-column:1/-1}
+.manual-h{margin:0}
+.mottos{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-md);padding-bottom:var(--space-lg);border-bottom:1px solid var(--color-rule)}
+.mottos li{border:0;padding:0}
+.mottos q{display:block;quotes:none;font-stretch:118%;font-weight:800;font-size:clamp(1.25rem,2.1vw,1.55rem);line-height:1.15;color:var(--color-ink)}
+.mottos q::before,.mottos q::after{content:none}
+.mottos li:first-child q{background:linear-gradient(transparent 58%,var(--color-mark) 58%,var(--color-mark) 92%,transparent 92%);display:inline}
+.mottos span{display:block;margin-top:.35rem;font-size:.88rem;color:var(--color-ink-2)}
+@media (min-width:40rem){.mottos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:60rem){.manual{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--space-xl)}.mottos{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--space-lg)}}
+
 /* Experiments: uneven tiles, real screenshots */
 .work{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-md);margin-bottom:var(--space-xl)}
 .work h2{grid-column:1/-1;margin-bottom:0}
@@ -123,6 +142,42 @@ footer p{margin:0}
 </header>
 
 <main>
+<section class="manual" aria-labelledby="manual-h">
+  <h2 id="manual-h" class="manual-h">How I work</h2>
+  <ul class="mottos" aria-label="What I live by">
+    <li><q>Leave it better than you found it.</q><span>My mom's campground rule. It's my why.</span></li>
+    <li><q>The dark side of science.</q><span>Phil Costanzo's phrase for using chemistry to make materials that solve real problems, the kind people buy and use.</span></li>
+    <li><q>Do science, make money, have fun.</q><span>How Roger Avakian sold me on PolyOne. The money always comes with a purpose.</span></li>
+    <li><q>Run the next small experiment.</q><span>Every step of my career was one.</span></li>
+  </ul>
+  <div>
+    <p class="lead">I'm a futurist and an analyst first. I see where something could go, then I want to start building it.</p>
+    <p class="strengths">Top five CliftonStrengths: Futuristic, Analytical, Restorative, Intellection, Activator.</p>
+    <p class="strengths">Write your own: <a href="https://github.com/danielmiessler/telos">TELOS</a>, a <a href="https://careers.vcu.edu/media/vcu-careers/docs/ValuesCardSort.pdf">values card sort</a>, or an <a href="https://learning.unog.ch/sites/default/files/ContainerEn/TM/CTT/CTT_Worksheet_2024-01-25_Ikigai_fillable_Final.pdf">ikigai worksheet</a>.</p>
+    <p class="reach">Reach me on <a href="https://www.linkedin.com/in/johnpswanson">LinkedIn</a> or at <a href="mailto:john@john-swanson.com">john@john-swanson.com</a>.</p>
+  </div>
+  <div>
+    <h3>Working with me</h3>
+    <ul>
+      <li><b>Bring me in early.</b> Figuring out whether something can work is where I'm most useful.</li>
+      <li><b>Bring me problems.</b> I like broken things.</li>
+      <li><b>Give me time to think.</b> My second answer beats my first.</li>
+      <li><b>Show me the data.</b> Disagree with numbers and I'll change my mind.</li>
+      <li><b>Ask how I got there.</b> I skip to conclusions. I'm happy to walk you through the path.</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Watch for</h3>
+    <ul>
+      <li><b>I start before the plan is done.</b> Ask me for the first step.</li>
+      <li><b>My questions can sound skeptical.</b> They're how I learn.</li>
+      <li><b>I'll fix things that already work.</b> Tell me to leave it.</li>
+      <li><b>I say yes too often.</b> Call it when I do.</li>
+      <li><b>I avoid conflict.</b> Say the hard thing plainly. I'd rather know.</li>
+    </ul>
+  </div>
+</section>
+
 <section class="work" aria-labelledby="work-h">
   <h2 id="work-h">Experiments</h2>
   <a class="big" href="https://picinnovation.org/catena/">
