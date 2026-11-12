@@ -3,125 +3,218 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>John Swanson · User Manual</title>
-<meta name="description" content="Things I've built, books that changed how I see the world, and the tools I actually use.">
+<title>John Swanson · My User Manual</title>
+<meta name="description" content="Things John Swanson has built, books that changed how he sees the world, and the tools he actually uses.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=JetBrains+Mono:wght@500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
 <style>
-/* Colours borrowed from john-swanson.com so the two sites read as siblings. */
-:root{--bg:#f0ede8;--card:#faf8f5;--text:#1a1815;--sec:#5a5550;--line:#d8d3cc;--dot:#cfc9c0;--accent:#7a5528;--copper:#9a6f3a}
-@media (prefers-color-scheme:dark){:root{--bg:#0d0c0b;--card:#151311;--text:#e8e4df;--sec:#a09a93;--line:#2a2724;--dot:#24211e;--accent:#d4a57a;--copper:#c4956a}}
+/* Hallmark · macrostructure: Bento Grid (single spread) · tone: notebook-technical · anchor hue: 105 highlighter
+ * nav: none (one page) · footer: Ft1 colophon line · enrichment: real handwriting (Supernote) + real product screenshots
+ * Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4
+ * Reference: an e-ink notebook page with one highlighter. One family (Archivo) carried by its width axis. */
+:root{
+  --color-paper:oklch(96.5% 0.006 90);
+  --color-paper-2:oklch(93% 0.008 90);
+  --color-ink:oklch(21% 0.012 90);
+  --color-ink-2:oklch(42% 0.012 90);
+  --color-rule:oklch(84% 0.01 90);
+  --color-dot:oklch(84% 0.008 90);
+  --color-mark:oklch(91% 0.16 105);
+  --color-mark-ink:oklch(21% 0.012 90);
+  --color-focus:oklch(55% 0.2 260);
+  --color-shadow:oklch(20% 0.01 90 / .45);
+  --font:"Archivo",system-ui,sans-serif;
+  --space-2xs:.5rem;--space-xs:.75rem;--space-sm:1rem;--space-md:1.5rem;--space-lg:2rem;--space-xl:3rem;--space-2xl:4.5rem;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+@media (prefers-color-scheme:dark){:root{
+  --color-paper:oklch(19% 0.008 90);
+  --color-paper-2:oklch(23% 0.008 90);
+  --color-ink:oklch(93% 0.006 90);
+  --color-ink-2:oklch(72% 0.008 90);
+  --color-rule:oklch(32% 0.008 90);
+  --color-dot:oklch(30% 0.006 90);
+  --color-mark:oklch(86% 0.15 105);
+  --color-focus:oklch(75% 0.14 260);
+  --color-shadow:oklch(5% 0 0 / .7);
+}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg) radial-gradient(var(--dot) 1px,transparent 1.2px) 0 0/22px 22px;color:var(--text);font:1.0625rem/1.6 "DM Sans",system-ui,sans-serif}
-main{max-width:52rem;margin:auto;padding:3.5rem 1rem 4rem}
-h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;line-height:1.2}
-h1{font-size:clamp(2.2rem,7vw,3.4rem);margin:.3rem 0 .8rem}
-h2{font-size:1.65rem;margin:3.5rem 0 .4rem;padding-top:1rem;border-top:2px solid var(--copper)}
-h3{font-size:1.1rem;margin:1.8rem 0 .7rem}
-.mono,h2 span{font:500 .8rem/1 "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--sec)}
-h2 span{display:block;margin-bottom:.5rem;color:var(--copper)}
-.lede{font-size:1.2rem;color:var(--sec);max-width:36rem}
-.intro{color:var(--sec);margin:0 0 1.2rem}
-a{color:var(--accent);text-underline-offset:.18em}
-a:hover{text-decoration-thickness:2px}
-a:focus-visible{outline:3px solid var(--copper);outline-offset:3px;border-radius:2px}
-nav{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin-top:1.5rem}
-ul{list-style:none;padding:0;margin:0}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.2rem}
-.card h3{margin:.5rem 0 .3rem}
-.card p{margin:0;color:var(--sec);font-size:.95rem}
-.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(8.5rem,1fr));gap:1.4rem 1rem}
-.books img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;border:1px solid var(--line);background:var(--card);box-shadow:0 2px 6px rgb(0 0 0/.12)}
-.books .mono{display:block;margin-bottom:.45rem;font-size:.68rem;line-height:1.3}
-.books b{display:block;margin-top:.5rem;font-size:.95rem;line-height:1.3}
-.books small{color:var(--sec)}
-.list li{padding:.6rem 0;border-bottom:1px dashed var(--line)}
-.list li:last-child{border-bottom:0}
-.list p{margin:.1rem 0 0;color:var(--sec);font-size:.95rem}
-.referral{background:var(--card);border:1px solid var(--copper);border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1rem}
-.referral p{margin:.3rem 0 0}
-code{font:500 1.05rem "JetBrains Mono",monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:.1rem .4rem}
-footer{margin-top:4rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--sec);font-size:.9rem}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--color-paper) radial-gradient(var(--color-dot) 1px,transparent 1.3px) 0 0/24px 24px;color:var(--color-ink);font:400 1rem/1.5 var(--font)}
+.page{max-width:76rem;margin:auto;padding:var(--space-xl) var(--space-sm) var(--space-lg)}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.2em}
+a:hover{background:var(--color-mark);color:var(--color-mark-ink);text-decoration:none}
+a:focus-visible{outline:3px solid var(--color-focus);outline-offset:2px}
+h2{font-stretch:125%;font-weight:800;font-size:1.05rem;letter-spacing:.01em;text-transform:uppercase;margin:0 0 var(--space-sm)}
+ul{list-style:none;margin:0;padding:0}
+
+/* Masthead: printed name, handwritten title, one line */
+.mast{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-sm);align-items:end;margin-bottom:var(--space-xl)}
+.mast .name{font-stretch:125%;font-weight:800;font-size:clamp(1.4rem,3vw,1.9rem);margin:0 0 var(--space-2xs);line-height:1}
+.mast h1{margin:0;line-height:0}
+.mast svg{width:min(34rem,100%);height:auto;fill:currentColor}
+.mast .what{max-width:34rem;margin:0;color:var(--color-ink-2);font-size:1.075rem}
+.mast .what a{color:var(--color-ink)}
+@media (min-width:60rem){.mast{grid-template-columns:auto minmax(0,1fr);column-gap:var(--space-xl)}.mast svg{width:27rem}}
+
+/* Experiments: uneven tiles, real screenshots */
+.work{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-md);margin-bottom:var(--space-xl)}
+.work h2{grid-column:1/-1;margin-bottom:0}
+.work a{display:block;text-decoration:none}
+.work a:hover{background:none;color:inherit}
+.work img{display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;object-position:top;border:1px solid var(--color-rule);border-radius:3px;background:var(--color-paper-2)}
+.work a:hover img{border-color:var(--color-ink)}
+.work h3{font-stretch:112%;font-weight:750;font-size:1.15rem;margin:.15rem 0}
+.work a:hover h3 span{background:var(--color-mark);color:var(--color-mark-ink)}
+.work p{margin:0;color:var(--color-ink-2);font-size:.95rem;max-width:34rem}
+.work .kind{display:block;margin-top:var(--space-xs);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;color:var(--color-ink-2)}
+/* Phones: thumbnail beside text so five projects fit in about one screen */
+@media (max-width:39.99rem){
+  .work{gap:var(--space-sm)}
+  .work a{display:grid;grid-template-columns:7rem minmax(0,1fr);column-gap:var(--space-sm);align-items:start}
+  .work img{grid-row:1/span 3;aspect-ratio:1;object-position:top left}
+  .work .kind{margin-top:0}
+  .work p{font-size:.88rem}
+}
+@media (min-width:40rem){.work{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:60rem){
+  .work{grid-template-columns:repeat(12,minmax(0,1fr))}
+  .work .big{grid-column:span 6}
+  .work .small{grid-column:span 4}
+  .work .big h3{font-size:1.4rem}
+}
+
+/* Bookshelf: one row on desktop */
+.shelf{margin-bottom:var(--space-xl)}
+.shelf ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-sm) var(--space-xs)}
+.shelf a{display:block}
+.shelf a:hover{background:none}
+.shelf img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:2px;box-shadow:0 1px 0 var(--color-rule),0 6px 14px -8px var(--color-shadow);transition:transform .25s var(--ease-out)}
+.shelf a:hover img,.shelf a:focus-visible img{transform:translateY(-4px)}
+@media (min-width:40rem){.shelf ul{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media (min-width:60rem){.shelf ul{grid-template-columns:repeat(12,minmax(0,1fr))}}
+
+/* Three columns of lists */
+.cols{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-xl) var(--space-lg);padding-top:var(--space-lg);border-top:2px solid var(--color-ink)}
+@media (min-width:60rem){.cols{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cols li{padding:.55rem 0;border-bottom:1px solid var(--color-rule)}
+.cols li:last-child{border-bottom:0}
+.cols li a{font-weight:650}
+.cols li p{margin:.1rem 0 0;color:var(--color-ink-2);font-size:.9rem}
+.tag{font-stretch:75%;font-weight:600;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid currentColor;border-radius:2px;padding:0 .3em;margin-left:.4rem;vertical-align:.12em;color:var(--color-ink-2)}
+code{font:700 .95rem/1 var(--font);font-stretch:125%;letter-spacing:.08em;background:var(--color-mark);color:var(--color-mark-ink);padding:.12em .35em;border-radius:2px}
+
+footer{margin-top:var(--space-xl);padding-top:var(--space-sm);border-top:1px solid var(--color-rule);display:flex;flex-wrap:wrap;gap:.25rem var(--space-md);justify-content:space-between;font-size:.85rem;color:var(--color-ink-2)}
+footer p{margin:0}
+
+@media (prefers-reduced-motion:reduce){.shelf img{transition:none}.shelf a:hover img{transform:none}}
 </style>
 </head>
 <body>
-<main>
-<header>
-  <p class="mono">LynyrdGrynyrd · User Manual</p>
-  <h1>John Swanson</h1>
-  <p class="lede">Polymer scientist who builds things. Here are the experiments I've shipped, the books that changed how I see the world, and the tools I actually use.</p>
-  <nav aria-label="Sections">
-    <a href="#experiments">Experiments</a><a href="#books">Books</a><a href="#tools">Tools &amp; gear</a><a href="#polymer">For polymer people</a><a href="https://john-swanson.com">Professional site ↗</a>
-  </nav>
+<div class="page">
+
+<header class="mast">
+  <div>
+    <p class="name">John Swanson</p>
+    <h1 aria-label="My User Manual"><svg viewBox="0 0 631 170" aria-hidden="true" focusable="false"><path d="M0 0 C4.3 0 8.6 0 13 0 C14.9 5.9 16.2 10.8 16 17 C16.1 17.5 16.1 17.5 16.5 19.9 C17.1 23.7 17 27.2 17 31 C17.2 32.2 17.4 33.5 17.6 34.8 C18 38 18 38 17 42 C17.5 44.6 18 47.2 18.5 49.9 C19.2 54.2 19.1 58.5 18.9 63 C19.1 68.1 21.1 72.3 23 77 C24.2 76.7 24.2 76.7 30 75 C32.4 77.4 31.2 81.9 31.3 85.1 C31 88 31 88 28 91 C22.8 91.1 19.7 90.5 15.3 87.6 C8.2 79.9 5.8 73.5 5 63 C4.8 61.2 4.6 59.5 4.5 57.7 C3.4 46.8 2.9 36.1 3.1 25.2 C3 19.6 2.1 14.5 1 9 C0.6 6 0.3 3 0 0 Z " transform="translate(588,0)"/><path d="M0 0 C6 4.7 7.3 10.6 8.8 17.8 C9.2 26.9 3 36.2 -3 42.9 C-4.3 44.2 -5.6 45.6 -7 47 C-17.5 59.4 -17.5 59.4 -17 68 C-16.7 69 -16.3 70 -16 71 C-10.9 71.9 -6.7 71.9 -1.6 71.1 C-0.3 70.9 1 70.8 2.3 70.6 C5.3 70.1 8.2 69.7 11.2 69.2 C15 69 15 69 19 72 C20.1 74.9 20.1 74.9 20 78 C16.5 82.5 12.9 83.4 7.4 84.2 C5.3 84.5 3.1 84.8 1 85 C-0.6 85.3 -2.3 85.7 -4 86 C-7.7 86 -11.3 86 -15 86 C-15 88 -15 90 -15 92 C-19 96 -19 96 -22 97 C-27 94 -27 94 -29 89 C-29.1 86.3 -29.1 83.7 -29 81 C-32.3 83.6 -35.1 86.1 -37.8 89.3 C-42.8 95 -47.6 100.5 -55.3 101.7 C-59 101 -59 101 -64 98 C-64.2 98.9 -64.5 99.8 -64.7 100.7 C-66.2 104.6 -67.7 106.4 -71 109 C-74.8 110.6 -77.1 111.1 -81.1 110.5 C-87.2 107.3 -89.7 102.2 -92 96 C-98.9 62.8 -98.9 62.8 -94 53 C-93.3 53 -92.7 53 -92 53 C-95 48 -95 48 -97.4 46.4 C-101.4 42.7 -102.5 38 -104 33 C-104.3 32 -104.6 30.9 -104.9 29.9 C-106.5 24.3 -107.7 19.6 -106 14 C-103 8.8 -100.7 5.5 -94.7 3.8 C-85.4 2.2 -85.4 2.2 -80.6 5 C-79.8 5.7 -78.9 6.3 -78 7 C-76.7 6.3 -75.4 5.7 -74 5 C-69.6 2.8 -68.5 2.8 -64 4 C-63.3 4.7 -62.7 5.3 -62 6 C-59.7 5.7 -57.3 5.4 -55 5 C-50.8 4.8 -50.8 4.8 -47 5 C-46 6 -45 7 -44 8 C-41 8 -41 8 -38.8 5.8 C-37.8 4.9 -36.9 4 -36 3 C-25.3 -6.2 -12.1 -7.2 0 0 Z M-30 14 C-28.9 19.5 -27.4 24.9 -25.8 30.3 C-25 34 -25 34 -25 40 C-24.3 41 -23.7 42 -23 43 C-15.2 41 -10.4 32.3 -6.4 25.7 C-4.9 21.7 -4.4 19.2 -5 15 C-7 11.2 -8.6 10.2 -12.6 8.4 C-19.3 7.8 -24.5 10.3 -30 14 Z M-58 20 C-59.4 23.4 -59.4 23.4 -60 27 C-62.5 29.8 -62.5 29.8 -65 32 C-65.7 32.7 -66.3 33.3 -67 34 C-66.7 35.3 -66.3 36.6 -66 38 C-61.5 36.2 -59.2 34.8 -55.6 31.8 C-54.7 31 -53.7 30.2 -52.7 29.3 C-51.8 28.6 -50.9 27.8 -50 27 C-48.6 25.8 -47.2 24.6 -45.8 23.4 C-44.9 22.6 -44 21.8 -43 21 C-43.3 19.4 -43.7 17.7 -44 16 C-48.8 16 -53.7 17.9 -58 20 Z M-92 17 C-92.3 17.5 -92.3 17.5 -94 20 C-91.3 33.1 -91.3 33.1 -88 38 C-86.7 38.3 -85.4 38.7 -84 39 C-75.3 25.2 -75.3 25.2 -74 20 C-79.8 14.8 -84.5 15.8 -92 17 Z M-41 35 C-43.4 36.9 -43.4 36.9 -46.1 39.6 C-51.1 44.3 -56 47.7 -62 51 C-61.5 58.3 -59.8 65.1 -58 72.2 C-56.9 76.4 -55.9 80.7 -55 85 C-45.8 82.7 -40.7 73.8 -35.4 66.4 C-33.6 62 -34.1 59.7 -35 55 C-35.4 52.8 -35.7 50.6 -36.1 48.4 C-36.2 47.3 -36.4 46.2 -36.6 45.1 C-37 42 -37 42 -37 36 C-38.3 35.7 -39.6 35.3 -41 35 Z M-82 60 C-82.2 67.9 -81.6 75.4 -80.5 83.2 C-80.4 84.2 -80.2 85.3 -80.1 86.4 C-79.7 88.9 -79.4 91.5 -79 94 C-77.3 93.3 -75.7 92.7 -74 92 C-71.4 81.7 -74.3 70.4 -79 61 C-80 60.7 -81 60.3 -82 60 Z " transform="translate(305,13)"/><path d="M0 0 C4.8 -0.3 4.8 -0.3 10 0 C13 4 13 4 13 6 C13.7 6 14.3 6 15 6 C19.3 20.4 22.4 33.9 22 49 C22.7 49 23.3 49 24 49 C24 48.1 24 47.2 23.9 46.3 C23.9 42.3 23.8 38.2 23.8 34.1 C23.7 32.7 23.7 31.3 23.6 29.9 C23.6 21.6 24.1 15.4 28 8 C32.9 3.1 32.9 3.1 38 3 C45.6 7.5 46.9 10.6 49 19 C49.1 19.8 49.1 19.8 49.4 23.7 C50 29 51 33.9 52.4 39 C52.8 40.7 53.3 42.5 53.7 44.3 C55.1 49.2 56.5 54.1 58 59 C58.8 62 59.6 65.1 60.3 68.2 C60.9 70.6 61.5 73 62.2 75.4 C63 79 63 79 63 84 C62.3 84.7 62.3 84.7 59 88 C57 88 55 88 53 88 C48.8 83.8 48 78.4 46.8 72.7 C45.9 68.5 44.9 64.4 43.8 60.2 C43.5 58.8 43.1 57.5 42.8 56 C42.5 55 42.3 54 42 53 C39 55 39 55 38 58 C37.9 61 37.8 64 37.8 67 C37.7 68.6 37.7 70.2 37.7 71.9 C38 76 38 76 41 79 C41 81 41 83 41 85 C38 88 38 88 34.6 88.4 C31 88 31 88 27 85 C27 84.3 27 83.7 27 83 C26.1 83.8 25.3 84.6 24.4 85.4 C20.9 88.1 19.3 88.9 15 89 C1 83.4 -5.1 62.8 -11.4 50.1 C-13.5 46 -15.7 42 -18 38 C-18.3 37.3 -18.7 36.7 -19 36 C-20.5 40.5 -19 43.7 -17.8 48.2 C-17.3 50 -16.9 51.8 -16.4 53.6 C-15.6 56.9 -14.7 60.1 -13.8 63.4 C-11.5 72 -10.3 80.1 -10 89 C-8.7 89.3 -7.4 89.7 -6 90 C-5 94 -5 94 -6 96 C-7.1 95.9 -8.2 95.9 -9.3 95.8 C-13 96 -13 96 -16 99 C-20 100 -20 100 -22.8 99 C-30.8 94 -35.2 86.9 -40 79 C-42 76 -44 73 -46 70 C-46.3 70 -46.7 70 -47 70 C-46.9 70.9 -46.8 71.8 -46.8 72.8 C-46.4 79.6 -46.3 83 -50.2 88.9 C-54 92 -54 92 -59 92 C-59.3 93.7 -59.7 95.3 -60 97 C-61 98 -62 99 -63 100 C-65 100 -67 100 -69 100 C-76.8 92.2 -78.5 81.7 -80 71 C-80.3 70.3 -80.7 69.7 -81 69 C-82.2 69.2 -82.2 69.2 -88 70 C-87.9 72.2 -87.8 74.4 -87.7 76.6 C-87.6 77.8 -87.6 79 -87.5 80.3 C-87 84 -87 84 -85.4 87.4 C-83.6 91.9 -83.9 94.9 -84.5 99.7 C-84.7 101.2 -84.8 102.6 -85 104.1 C-86 108 -86 108 -88.3 110.6 C-91 112 -91 112 -96 111 C-99.8 105.9 -100.1 101.1 -101 95 C-105.2 69.3 -105.2 69.3 -109.2 61.8 C-111 58 -111 58 -110.5 54.4 C-109.9 49.3 -110.6 45.1 -111.4 40 C-111.7 38.3 -112 36.6 -112.3 34.9 C-112.5 33.6 -112.8 32.3 -113 31 C-113.7 31 -114.3 31 -115 31 C-119.6 40.2 -118.4 50.6 -118.4 60.7 C-118.5 62.2 -118.5 63.6 -118.5 65.2 C-118.5 66.5 -118.5 67.8 -118.5 69.2 C-119.1 73.7 -120.5 76.3 -123 80 C-126.4 82.6 -126.4 82.6 -130 84 C-135 82 -135 82 -139 78 C-139.5 77.8 -139.5 77.8 -142 77 C-141.7 79.4 -141.5 81.8 -141.2 84.1 C-141 85.4 -140.9 86.8 -140.7 88.1 C-140 91.9 -138.8 94.6 -137 98 C-136.5 104.3 -136.7 106.5 -140 112 C-140.2 112.2 -140.2 112.2 -141 113 C-143 113 -145 113 -147 113 C-150.9 109.1 -151 106.4 -152 101 C-152.3 99.5 -152.7 98 -153 96.4 C-155.3 84.1 -156.2 72.1 -156.4 59.6 C-156.4 59 -156.4 59 -156.5 55.7 C-156.5 46.5 -155.3 39.4 -149.6 31.8 C-148.7 31.2 -147.9 30.6 -147 30 C-141.2 31.2 -140.3 32.3 -137 37 C-134.5 42.4 -134.4 48.1 -134 54 C-133.3 54 -132.7 54 -132 54 C-132 53.5 -132 53.5 -132.1 50.9 C-132.5 38 -130.9 28 -122 18 C-116.7 14.8 -114.9 14.4 -109 15 C-105.3 17.3 -103.6 19.5 -101 23 C-100.3 23 -99.7 23 -99 23 C-98.4 21.9 -97.9 20.9 -97.3 19.8 C-95.1 16.2 -93.5 14.2 -90 12 C-85 11 -85 11 -80 14 C-76 18 -75.3 22.3 -73.9 27.6 C-73.6 28.6 -73.6 28.6 -72.3 33.4 C-71.2 38.3 -70.5 43 -70 48 C-69.4 51.8 -68.7 55.5 -68 59.3 C-67.6 61.2 -67.3 63.1 -66.9 65.1 C-66.4 68.1 -65.7 71.1 -65 74 C-64.3 74.3 -63.7 74.7 -63 75 C-62.7 66.9 -63 59.3 -64.5 51.3 C-66.3 41.6 -66.9 31.8 -66 22 C-65 20.7 -64 19.4 -63 18 C-57 18 -57 18 -53.8 20.4 C-50.5 24.6 -49.9 27.8 -49 33 C-48 34.6 -47 36.3 -46 38 C-45 40.4 -44.1 42.9 -43.1 45.3 C-40.9 51 -38.4 55.9 -35 61 C-33.9 62.9 -32.9 64.9 -31.9 66.8 C-29 72 -29 72 -26 75 C-26.7 66.9 -29.1 59.7 -31.6 52 C-33 46.9 -33.5 42.2 -34 37 C-34.4 35.3 -34.7 33.7 -35.1 31.9 C-36.5 24.3 -37.1 19.8 -33 13 C-30 11 -30 11 -26.8 11.4 C-25.9 11.6 -25 11.8 -24 12 C-23.7 13 -23.3 14 -23 15 C-18 14 -18 14 -14.9 12.8 C-12 12 -12 12 -8 14 C-7.7 14.5 -7.7 14.5 -6 17 C-6.7 20.3 -7.3 23.7 -8 27 C-6.9 30 -6.9 30 -5.1 33.2 C-4.5 34.5 -3.8 35.7 -3.2 36.9 C-2.8 37.6 -2.8 37.6 -1 41 C-0.2 42.5 0.6 44.1 1.4 45.7 C7.7 57.9 7.7 57.9 10 59 C6.3 18.8 6.3 18.8 0.9 10.8 C-1.7 6.9 -0.9 4.4 0 0 Z M-88 33 C-89.8 40.2 -90.4 46.7 -89 54 C-87.7 54.7 -86.4 55.3 -85 56 C-82.9 50.9 -82.9 49.2 -83.7 43.9 C-83.9 42.7 -84 41.5 -84.2 40.3 C-85 37 -85 37 -88 33 Z " transform="translate(528,0)"/><path d="M0 0 C6 0 6 0 9.2 2.8 C12.7 8 13.3 12.9 14 19 C14.9 24.9 15.8 30.4 18 36 C18 38.3 18 40.7 18 43 C18.6 45 19.3 47 20 49 C21.5 57.4 21.3 65.9 21.3 74.5 C21.3 76.2 21.4 77.8 21.4 79.6 C21.4 81.2 21.4 82.8 21.4 84.5 C21.4 85.9 21.5 87.4 21.5 88.9 C20.8 95 18.3 98.7 14 103 C10.2 104 7.8 104.3 4.1 103.1 C-13.4 91.3 -23.9 65 -28 45 C-28.2 39.2 -27.2 37.3 -23.8 32.6 C-20 29 -20 29 -15 28 C-11.8 29.1 -11.8 29.1 -9 31 C-8.3 32.6 -7.7 34.3 -7 36 C-8 37.6 -9 39.3 -10 41 C-10.7 41.2 -10.7 41.2 -14 42 C-10.6 55.6 -5.7 68.3 2 80 C2.7 81.5 3.4 82.9 4.2 84.4 C6 88 6 88 8 89 C8.1 84.7 8.1 80.5 8.2 76.2 C8.2 75.1 8.2 73.9 8.3 72.7 C8.3 64.5 7.2 57.8 5 50 C4.6 46.3 4.3 42.7 4 39 C3.4 36 2.7 33 2 30 C1.7 28.6 1.4 27.3 1.1 25.9 C0 21 0 21 -1.2 17.3 C-1.6 16 -2 14.7 -2.4 13.3 C-2.8 12.1 -3.2 10.8 -3.6 9.6 C-4 6 -4 6 -2.5 2.5 C-2.1 2.1 -2.1 2.1 0 0 Z " transform="translate(181,18)"/><path d="M0 0 C3 4 3 4 2.9 8.6 C3.1 17 5.8 22.7 11.6 28.8 C12.7 29.5 13.9 30.2 15 31 C16 30.7 17 30.3 18 30 C19 26.3 20 22.7 21 19 C22 18 23 17 24 16 C26 16 28 16 30 16 C34 20 34 20 34 24.1 C33.2 28 32.2 31.1 30.8 34.8 C30.2 36.5 29.6 38.2 29 40 C30 41.7 31 43.3 32 45 C30 50 30 50 28 54 C26.3 68.9 25.8 84.4 28.9 99.2 C29 102 29 102 26 107 C23.1 108.1 23.1 108.1 20 108 C16.9 105.5 15.2 103.8 14.1 100 C12.1 81.9 11 62.6 16 45 C15.1 44.9 14.2 44.8 13.3 44.7 C5.9 43.1 0.9 38.2 -3.6 32.4 C-6 28 -6 28 -7 23 C-7.7 23 -8.3 23 -9 23 C-8.9 24.8 -8.8 26.6 -8.6 28.5 C-8.6 29 -8.6 29 -8.4 31.6 C-8 35 -8 35 -7 38.9 C-4.5 48.9 -0.7 65.5 -5.6 75.2 C-8 77 -8 77 -14 77 C-17.4 72.5 -17.6 70.5 -18.1 65 C-18.3 63.5 -18.4 62 -18.6 60.4 C-18.9 56.7 -19.2 53 -19.5 49.2 C-20 44 -20 44 -22 39 C-22 37.3 -22 35.7 -22 34 C-22.7 34 -23.3 34 -24 34 C-23.7 35 -23.3 36 -23 37 C-23.5 76.5 -23.5 76.5 -33 86 C-36.9 86.5 -39.2 86.4 -42.7 84.6 C-48 78.6 -49.3 70.7 -51 63 C-51.7 60.8 -52.4 58.7 -53.1 56.6 C-55 51 -55 51 -55 49 C-55.3 49.2 -55.3 49.2 -57 50 C-57 51.1 -56.9 52.1 -56.9 53.2 C-57 58.1 -57.6 62.6 -58.5 67.5 C-60 77.6 -60 87.4 -59.7 97.6 C-60 103.2 -61 107.7 -63 113 C-66 115 -66 115 -69.5 114.9 C-73 114 -73 114 -76 109 C-76.3 104.7 -76.4 101.2 -75 97.1 C-73.9 93.7 -73.8 91.1 -73.9 87.5 C-74.1 83.2 -73.7 79.3 -73 75 C-73 73.4 -73 71.8 -73.1 70.2 C-73 65.1 -72.1 60.9 -71 56 C-71 53.7 -71 51.3 -71 49 C-70.1 40 -69.1 30.7 -64 23 C-59.6 22.3 -55.4 22 -51 22 C-46.2 26.8 -45.4 33 -44.1 39.5 C-42.8 44.8 -40.5 49.2 -38 54 C-38 53.5 -38 53.5 -37.9 50.8 C-37.7 46 -37.5 41.1 -37.3 36.3 C-37.3 34.7 -37.2 33 -37.2 31.3 C-36.1 8.8 -36.1 8.8 -27.9 1.1 C-25 0 -25 0 -21 1 C-18.2 3.2 -15.5 5.5 -13 8 C-12.6 7.3 -12.6 7.3 -10.7 3.6 C-7 -2.6 -6.7 -2.7 0 0 Z " transform="translate(82,28)"/><path d="M0 0 C0.7 -0 0.7 -0 4.5 -0.1 C5.8 -0.1 7.2 -0.2 8.5 -0.2 C12.8 0.3 14.9 1.3 18.1 4.2 C18.1 6.2 18.1 8.2 18.1 10.2 C13.7 14.6 11.4 14.2 5.2 14.2 C3.9 14.2 2.7 14.2 1.4 14.2 C-7.2 14.2 -15.8 14.7 -24.4 15.1 C-26.3 15.2 -28.2 15.3 -30.1 15.4 C-56.8 16.7 -56.8 16.7 -65.9 18.2 C-68.8 18.4 -71.8 18.5 -74.7 18.6 C-82.6 19 -90.2 19.9 -98 21.3 C-101.6 22 -105.2 22.6 -108.9 23.1 C-122.6 25.1 -135.6 28.1 -148.9 32.2 C-157.8 34.9 -166 36.6 -175.3 37 C-178.8 37.2 -182.3 37.7 -185.8 38.3 C-194.4 39.7 -202.3 39.1 -210.9 38.2 C-213.3 38.1 -215.6 38.1 -217.9 38.2 C-218.1 38.4 -218.1 38.4 -218.9 39.2 C-223.9 39.2 -223.9 39.2 -226.7 37.6 C-228.9 35.2 -228.9 35.2 -229.7 31.8 C-228.9 28.2 -228.9 28.2 -226 25.5 C-220.9 22.6 -218 22.9 -212.3 23.4 C-210.5 23.5 -208.7 23.7 -206.9 23.8 C-205.3 23.9 -203.6 24.1 -201.9 24.2 C-186.1 24.9 -169 24 -153.9 19.2 C-138.6 14.4 -123.2 9.8 -107 8.6 C-101.9 8.2 -101.9 8.2 -99.1 7.2 C-95.4 6 -92.2 5.8 -88.4 5.6 C-84 5.4 -80.2 5.1 -75.9 4.2 C-73.3 4.2 -70.6 4.2 -67.9 4.2 C-65.4 3.9 -62.8 3.6 -60.2 3.2 C-54.1 2.4 -48.2 2.1 -42 2.2 C-39 2.2 -36 2 -32.9 1.8 C-22 0.8 -11 0.5 0 0 Z " transform="translate(612.91796875,107.796875)"/><path d="M0 0 C1.3 -0 2.6 -0 3.9 -0 C7.7 0.1 7.7 0.1 10.5 0.6 C13.9 1.2 17.1 1.3 20.5 1.4 C21.9 1.5 23.2 1.5 24.6 1.6 C25.3 1.6 25.3 1.6 28.9 1.7 C29.6 1.7 29.6 1.7 33.3 1.8 C53.9 2.4 74.6 2.9 95.1 0.5 C99.9 0.1 104 0.2 108.7 1.1 C110.7 4.1 110.7 4.1 110.7 9.1 C106.1 13.8 104.7 13.8 98.4 14.3 C96.9 14.5 95.5 14.6 93.9 14.7 C92.5 14.9 91.1 15 89.7 15.1 C88.7 15.3 87.7 15.5 86.7 15.6 C81.1 16.3 75.4 16.3 69.7 16.3 C68.5 16.3 67.2 16.3 65.9 16.3 C63.3 16.3 60.7 16.3 58.1 16.3 C54.1 16.3 50.1 16.3 46 16.3 C43.5 16.3 40.9 16.3 38.4 16.3 C37.2 16.3 36 16.3 34.8 16.3 C29.9 16.3 25.5 16.1 20.7 15.1 C19.3 15.1 17.8 15.1 16.4 15.1 C12 15.1 8 14.7 3.7 14.1 C-0.8 14 -4.7 14 -9.1 14.9 C-12.3 15.1 -12.3 15.1 -15.2 12.7 C-15.9 11.8 -16.6 11 -17.3 10.1 C-15.3 5.2 -14.5 4 -10.3 1.1 C-6.7 -0.1 -3.8 -0 0 0 Z " transform="translate(191.3125,136.875)"/><path d="M0 0 C3 5 3 5 3 8 C9.7 8.1 15.8 7.7 22.4 6.5 C31.2 5.2 39.7 4.6 48.6 4.6 C49.7 4.5 50.9 4.5 52.1 4.5 C60.5 4.5 60.5 4.5 65 9 C64.9 13.6 64.3 14.7 61 18 C57.9 18.4 57.9 18.4 54.2 18.4 C52.8 18.5 51.5 18.5 50.1 18.5 C49.3 18.5 49.3 18.5 45.8 18.6 C43 18.6 40.2 18.6 37.4 18.7 C36.7 18.7 36.7 18.7 33.6 18.7 C29.8 19 26.6 19.9 23 21 C20.7 21.2 18.5 21.4 16.2 21.6 C10.2 21.9 10.2 21.9 8 23 C0.7 23.3 -6 22.9 -13 21 C-17.2 16.7 -17 15.2 -17 9 C-14.4 4.6 -13 2.8 -9 0 C-5 -1 -5 -1 0 0 Z " transform="translate(17,147)"/></svg></h1>
+  </div>
+  <p class="what">Polymer scientist who builds things. What I've made, the books that rewired me, and the gear I'd buy again. The professional version is at <a href="https://john-swanson.com">john-swanson.com</a>.</p>
 </header>
 
-<section id="experiments">
-  <h2><span>§1</span>Experiments</h2>
-  <p class="intro">Things I built to see if they would work.</p>
-  <ul class="cards">
-    <li class="card"><span class="mono">Game · play it</span><h3><a href="https://picinnovation.org/catena/">Catena</a></h3><p>A polymer chain game. Grow a chain, learn some polymer chemistry along the way.</p></li>
-    <li class="card"><span class="mono">Data journalism</span><h3><a href="https://polymerindustrycluster.github.io/evidence-room/">The PIC Evidence Room</a></h3><p>Data stories on the Northeast Ohio polymer economy, with sources and claims you can re-run.</p></li>
-    <li class="card"><span class="mono">Web app</span><h3><a href="https://neograf.app">NeoGraf Product Navigator</a></h3><p>Product information and selection tools for NeoGraf graphite materials.</p></li>
-    <li class="card"><span class="mono">Open source</span><h3><a href="https://github.com/LynyrdGrynyrd/gac-card-scanner">Business-card scanner</a></h3><p>Local OCR plus vision AI turns a stack of business cards into a reviewed contact list.</p></li>
+<main>
+<section class="work" aria-labelledby="work-h">
+  <h2 id="work-h">Experiments</h2>
+  <a class="big" href="https://picinnovation.org/catena/">
+    <img src="shots/catena.webp" width="960" height="600" alt="Catena title screen: a dark field with a glowing chain and a Start at Level 1 button">
+    <span class="kind">Game · free to play</span>
+    <h3><span>Catena</span></h3>
+    <p>A polymer chain game. Eat the glowing pieces to grow longer, keep the chain straight, and don't run into yourself.</p>
+  </a>
+  <a class="big" href="https://buynothingadventure.com/">
+    <img src="shots/porch.webp" width="960" height="600" alt="Porch Pickup start page styled as a private Lakewood neighborhood group">
+    <span class="kind">Game · choose your own adventure</span>
+    <h3><span>Porch Pickup</span></h3>
+    <p>A choose-your-own-adventure game based on Buy Nothing groups, set in Lakewood, Ohio. Free furniture, group politics, 86 endings.</p>
+  </a>
+  <a class="small" href="https://polymerindustrycluster.github.io/evidence-room/">
+    <img src="shots/evidence.webp" width="960" height="600" alt="The PIC Evidence Room headline: The polymer economy, with the working shown">
+    <span class="kind">Data journalism</span>
+    <h3><span>The PIC Evidence Room</span></h3>
+    <p>Public-data stories on Northeast Ohio's polymer economy, with the working shown.</p>
+  </a>
+  <a class="small" href="https://neograf.app">
+    <img src="shots/neograf.webp" width="960" height="600" alt="NeoGraf Product Navigator search page">
+    <span class="kind">Web app</span>
+    <h3><span>NeoGraf Product Navigator</span></h3>
+    <p>Search and compare graphite products and their technical specs.</p>
+  </a>
+  <a class="small" href="https://github.com/LynyrdGrynyrd/gac-card-scanner">
+    <img src="shots/scanner.webp" width="960" height="600" alt="Card scanner review screen with a scanned business card beside editable contact fields">
+    <span class="kind">Open source</span>
+    <h3><span>Business-card scanner</span></h3>
+    <p>Turns a stack of business cards into a reviewed contact list. Local OCR plus vision AI.</p>
+  </a>
+</section>
+
+<section class="shelf" aria-labelledby="shelf-h">
+  <h2 id="shelf-h">Books that changed how I see the world</h2>
+  <ul>
+    <li><a href="https://www.amazon.com/s?k=Atomic+Habits+James+Clear&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/12539702.jpg" width="300" height="450" alt="Atomic Habits by James Clear"></a></li>
+    <li><a href="https://www.amazon.com/s?k=Building+a+Second+Brain+Tiago+Forte&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/12372866.jpg" width="300" height="450" alt="Building a Second Brain by Tiago Forte"></a></li>
+    <li><a href="https://www.amazon.com/s?k=Deep+Work+Cal+Newport&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/7988607.jpg" width="300" height="450" alt="Deep Work by Cal Newport"></a></li>
+    <li><a href="https://www.amazon.com/s?k=A+World+Without+Email+Cal+Newport&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/10328430.jpg" width="300" height="450" alt="A World Without Email by Cal Newport"></a></li>
+    <li><a href="https://www.amazon.com/s?k=7+Habits+of+Highly+Effective+People+Covey&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/10079937.jpg" width="300" height="450" alt="The 7 Habits of Highly Effective People by Stephen R. Covey"></a></li>
+    <li><a href="https://www.amazon.com/s?k=Thinking+in+Bets+Annie+Duke&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/8792782.jpg" width="300" height="450" alt="Thinking in Bets by Annie Duke"></a></li>
+    <li><a href="https://www.amazon.com/s?k=The+Simple+Path+to+Wealth+JL+Collins&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/10448941.jpg" width="300" height="450" alt="The Simple Path to Wealth by J. L. Collins"></a></li>
+    <li><a href="https://www.amazon.com/s?k=DataStory+Nancy+Duarte&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/8791370.jpg" width="300" height="450" alt="DataStory by Nancy Duarte"></a></li>
+    <li><a href="https://www.amazon.com/s?k=Better+Data+Visualizations+Schwabish&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/13170388.jpg" width="300" height="450" alt="Better Data Visualizations by Jonathan Schwabish"></a></li>
+    <li><a href="https://www.amazon.com/s?k=Fundamentals+of+Polymer+Science+Painter+Coleman&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/1905465.jpg" width="300" height="450" alt="Fundamentals of Polymer Science by Painter and Coleman"></a></li>
+    <li><a href="https://www.amazon.com/s?k=Principles+of+Polymerization+Odian&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/odian-4e.jpg" width="300" height="450" alt="Principles of Polymerization by George Odian"></a></li>
+    <li><a href="https://www.amazon.com/s?k=Non-Runner%27s+Marathon+Trainer&amp;i=stripbooks&amp;tag=johnswanson02-20"><img src="covers/816400.jpg" width="300" height="450" alt="The Non-Runner's Marathon Trainer by Whitsett, Dolgener and Kole"></a></li>
   </ul>
 </section>
 
-<section id="books">
-  <h2><span>§2</span>Books that changed how I see the world</h2>
-  <ul class="books">
-    <li><span class="mono">Habits and attention</span><a href="https://openlibrary.org/works/OL17930368W"><img src="covers/12539702.jpg" alt=""><b>Atomic Habits</b></a><small>James Clear</small></li>
-    <li><span class="mono">Habits and attention</span><a href="https://openlibrary.org/works/OL26417584W"><img src="covers/12372866.jpg" alt=""><b>Building a Second Brain</b></a><small>Tiago Forte</small></li>
-    <li><span class="mono">Habits and attention</span><a href="https://openlibrary.org/works/OL17713267W"><img src="covers/7988607.jpg" alt=""><b>Deep Work</b></a><small>Cal Newport</small></li>
-    <li><span class="mono">Habits and attention</span><a href="https://openlibrary.org/works/OL21162433W"><img src="covers/10328430.jpg" alt=""><b>A World Without Email</b></a><small>Cal Newport</small></li>
-    <li><span class="mono">Habits and attention</span><a href="https://openlibrary.org/works/OL2629977W"><img src="covers/10079937.jpg" alt=""><b>The 7 Habits of Highly Effective People</b></a><small>Stephen R. Covey</small></li>
-    <li><span class="mono">Decisions and money</span><a href="https://openlibrary.org/works/OL19736287W"><img src="covers/8792782.jpg" alt=""><b>Thinking in Bets</b></a><small>Annie Duke</small></li>
-    <li><span class="mono">Decisions and money</span><a href="https://openlibrary.org/works/OL19747351W"><img src="covers/10448941.jpg" alt=""><b>The Simple Path to Wealth</b></a><small>J. L. Collins</small></li>
-    <li><span class="mono">Communicating with data</span><a href="https://openlibrary.org/works/OL20145759W"><img src="covers/8791370.jpg" alt=""><b>DataStory</b></a><small>Nancy Duarte</small></li>
-    <li><span class="mono">Communicating with data</span><a href="https://openlibrary.org/works/OL21694682W"><img src="covers/13170388.jpg" alt=""><b>Better Data Visualizations</b></a><small>Jonathan Schwabish</small></li>
-    <li><span class="mono">Polymer science</span><a href="https://openlibrary.org/works/OL2757513W"><img src="covers/1905465.jpg" alt=""><b>Fundamentals of Polymer Science</b></a><small>Painter &amp; Coleman</small></li>
-    <li><span class="mono">Polymer science</span><a href="https://openlibrary.org/works/OL3947819W"><img src="covers/odian-4e.jpg" alt=""><b>Principles of Polymerization</b></a><small>George Odian</small></li>
-    <li><span class="mono">Running</span><a href="https://openlibrary.org/works/OL2748630W"><img src="covers/816400.jpg" alt=""><b>The Non-Runner's Marathon Trainer</b></a><small>Whitsett, Dolgener &amp; Kole</small></li>
-  </ul>
-</section>
-
-<section id="tools">
-  <h2><span>§3</span>Tools &amp; gear I actually use</h2>
-  <div class="referral">
-    <span class="mono">Referral</span>
-    <h3 style="margin:.4rem 0 0"><a href="https://muse.ai/join">Muse</a>, my personal AI agent</h3>
-    <p>Join, then redeem code <code>2L7IWA</code> in Settings within 48 hours. We each get 1 billion Muse tokens.</p>
-  </div>
-  <ul class="list">
-    <li><a href="https://supernote.com">Supernote</a><p>E-ink notebook. This page started as handwritten notes on one.</p></li>
-    <li><a href="https://obsidian.md">Obsidian</a><p>Notes and second brain.</p></li>
-    <li><a href="https://readwise.io">Readwise</a><p>Keeps the highlights from everything I read.</p></li>
-    <li><a href="https://www.todoist.com">Todoist</a><p>Task list.</p></li>
-    <li><a href="https://www.monarch.com">Monarch</a><p>Budgeting and net worth in one place.</p></li>
-    <li><a href="https://nas.ugreen.com">UGREEN NAS</a><p>Home server for photos, backups and self-hosted apps.</p></li>
-    <li><a href="https://homebox.software">Homebox</a><p>Self-hosted inventory of everything in the house.</p></li>
-    <li><a href="https://www.flashforge.com">FlashForge Adventurer 5M</a><p>The 3D printer.</p></li>
-    <li><a href="https://www.soundcore.com/sleep-a20-sleeping-earbuds">Soundcore Sleep A20</a><p>Earbuds you can actually sleep in.</p></li>
-    <li><a href="https://buynothingproject.org">Buy Nothing</a><p>Give and get things free from your neighbours.</p></li>
-  </ul>
-  <p class="mono" style="margin-top:1rem">Some links on this page are referral links. If you use one, we may both get a perk.</p>
-</section>
-
-<section id="polymer">
-  <h2><span>§4</span>For polymer people</h2>
-  <ul class="list">
-    <li><a href="https://www.nsf.gov/funding/initiatives/reu">NSF Research Experiences for Undergraduates</a><p>Paid summer research. Search the REU site directory for polymers and materials.</p></li>
-    <li><a href="https://www.4spe.org/Plastics-Surveys">SPE plastics salary surveys</a><p>What people in the plastics industry actually get paid.</p></li>
-    <li><a href="https://www.acs.org/careers.html">ACS career resources</a><p>Job listings, résumé reviews and career consultants from the American Chemical Society.</p></li>
-    <li><a href="https://alphachisigma.org">Alpha Chi Sigma</a><p>The professional fraternity for the chemical sciences.</p></li>
-    <li><a href="https://urbaninstitute.github.io/graphics-styleguide/">Urban Institute data visualization style guide</a><p>The best free guide to making charts that people understand.</p></li>
-  </ul>
-</section>
+<div class="cols">
+  <section aria-labelledby="gear-h">
+    <h2 id="gear-h">Gear I'd buy again</h2>
+    <ul>
+      <li><a href="https://www.amazon.com/s?k=Supernote&amp;tag=johnswanson02-20">Supernote</a><span class="tag">Amazon</span><p>E-ink notebook. This page started as handwriting on one.</p></li>
+      <li><a href="https://www.amazon.com/s?k=FlashForge+Adventurer+5M&amp;tag=johnswanson02-20">FlashForge Adventurer 5M</a><span class="tag">Amazon</span><p>The 3D printer.</p></li>
+      <li><a href="https://www.amazon.com/s?k=UGREEN+NASync&amp;tag=johnswanson02-20">UGREEN NASync</a><span class="tag">Amazon</span><p>Home server for photos, backups and self-hosted apps.</p></li>
+      <li><a href="https://www.amazon.com/s?k=Soundcore+Sleep+A20&amp;tag=johnswanson02-20">Soundcore Sleep A20</a><span class="tag">Amazon</span><p>Earbuds you can actually sleep in.</p></li>
+    </ul>
+  </section>
+  <section aria-labelledby="apps-h">
+    <h2 id="apps-h">Software I use daily</h2>
+    <ul>
+      <li><a href="https://muse.ai/join">Muse</a><span class="tag">Referral</span><p>My personal AI agent. Redeem <code>2L7IWA</code> in Settings within 48 hours of joining and we each get 1 billion tokens.</p></li>
+      <li><a href="https://monarch.com/referral/00y3lzkqnu">Monarch</a><span class="tag">Referral</span><p>Budget, net worth and investments in one place.</p></li>
+      <li><a href="https://obsidian.md">Obsidian</a><p>Where my notes live.</p></li>
+      <li><a href="https://readwise.io">Readwise</a><p>Keeps every highlight from every book and article.</p></li>
+      <li><a href="https://www.todoist.com">Todoist</a><p>Tasks.</p></li>
+      <li><a href="https://homebox.software">Homebox</a><p>Self-hosted inventory of everything in the house.</p></li>
+      <li><a href="https://buynothingproject.org">Buy Nothing</a><p>Give and get free stuff from your neighbors.</p></li>
+    </ul>
+  </section>
+  <section aria-labelledby="poly-h">
+    <h2 id="poly-h">For polymer people</h2>
+    <ul>
+      <li><a href="https://www.nsf.gov/funding/initiatives/reu">NSF REU sites</a><p>Paid summer research for undergrads. Search the directory for polymers and materials.</p></li>
+      <li><a href="https://octet.software">Octet Draw</a><p>Free, open-source chemical drawing that opens and saves ChemDraw files.</p></li>
+      <li><a href="https://www.4spe.org/Plastics-Surveys">SPE salary surveys</a><p>What people in plastics actually get paid.</p></li>
+      <li><a href="https://www.acs.org/careers.html">ACS career resources</a><p>Job listings, résumé reviews and career consultants.</p></li>
+      <li><a href="https://alphachisigma.org">Alpha Chi Sigma</a><p>The professional fraternity for the chemical sciences.</p></li>
+      <li><a href="https://urbaninstitute.github.io/graphics-styleguide/">Urban Institute chart style guide</a><p>The best free guide to charts people understand.</p></li>
+    </ul>
+  </section>
+</div>
+</main>
 
 <footer>
-  <p>John Swanson · <a href="https://john-swanson.com">john-swanson.com</a> · <a href="https://github.com/LynyrdGrynyrd">GitHub</a></p>
+  <p>As an Amazon Associate I earn from qualifying purchases. Links tagged Referral earn me a perk too.</p>
+  <p><a href="https://john-swanson.com">john-swanson.com</a> · <a href="https://github.com/LynyrdGrynyrd">GitHub</a></p>
 </footer>
-</main>
+</div>
 </body>
 </html>
